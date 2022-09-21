@@ -11,7 +11,7 @@ const getData = async ()=>{
     }).promise();
     for (const file in data.Contents) {
         const params = {
-            Bucket: 'backupfarhad',
+            Bucket: process.env.S3_BUCKET_NAME,
             Key: `${data.Contents[file].Key}`
         };
         const rs = await s3.getObject(params).createReadStream();
